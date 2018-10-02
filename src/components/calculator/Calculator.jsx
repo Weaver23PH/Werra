@@ -58,7 +58,7 @@ class Calculator extends React.Component {
         }else if (isNaN(fstopValue)){
             fstopValue = Math.sqrt(Math.pow(2,evValue)*isoValue*timeValue/100);
             this.setState({
-                fstopVal: fstopValue.toFixed(2),
+                fstopVal: fstopValue.toFixed(1),
                 fstopCalc: true
             })
         }else if (isNaN(isoValue)){
@@ -86,7 +86,7 @@ class Calculator extends React.Component {
                 {this.state.fstopCalc && <h2>f/Stop value: {this.state.fstopVal}</h2>}
                 {this.state.isoCalc && <h2>`ISO value: ${this.state.isoVal} seconds`</h2>}
                 <form>
-                    <label>Aperture value (f/stop)</label><input type="number" name="fstop" id="fstop" value={this.state.fstop} onChange={(event)=> this.handleFStopChange(event)}/>
+                    <label>Aperture value (f/stop)</label><input type="number" name="fstop" id="fstop" value={this.state.fstopVal} onChange={(event)=> this.handleFStopChange(event)}/>
                     <label>ISO</label><input type="number" name="iso" id="isoVal" value={this.state.isoVal} onChange={(event)=> this.handleISOChange(event)}/>
                     <label>EV</label><input type="number" id="evVal" name="evVal" value={this.state.evVal} onChange={(event)=> this.handleEVChange(event)}/>
                     <label>Time (sec)</label><input type="number" id='timeVal' name="timeVal" value={this.state.timeVal} onChange={(event)=> this.handleTimeChange(event)}/>
