@@ -1,6 +1,10 @@
-#calculator{
+div, form{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+table, td, th{
+    border: 1px solid black;
+  text-align: center;
 }
