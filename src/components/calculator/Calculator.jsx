@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from "./Calculator.scss";
 
-
 class Calculator extends React.Component {
     constructor(props){
         super(props);
