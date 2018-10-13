@@ -32,7 +32,7 @@ class MainBody extends React.Component {
             <div id={styles.MainBody}>
                 <div className={styles.popButtonCalc + ' ' + styles.popButton} onClick={this.togglePopupCalc.bind(this)}> </div>
                 <div className={styles.popButtonTwo + ' ' + styles.popButton} onClick={this.togglePopupCalc.bind(this)}> </div>
-                <img src={bckSrc} alt="Werra_front"/>
+                <img src={bckSrc} alt="Werra"/>
 
                 {this.state.showPopupCalc ?
                     <PopupCalc
