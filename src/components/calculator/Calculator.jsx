@@ -80,7 +80,7 @@ class Calculator extends React.Component {
 
     render() {
         return (
-            <div id="calculator">
+            <div id={styles.calculator}>
                 {this.state.evCalc && <h2>EV value: {this.state.evVal}</h2>}
                 {this.state.timeCalc && <h2>Time value: {this.state.timeVal} seconds</h2>}
                 {this.state.fstopCalc && <h2>f/Stop value: {this.state.fstopVal}</h2>}
