@@ -21,11 +21,11 @@ class Rotate extends React.Component {
 
                 <div
                     style={{
-                        width: 750,
-                        height: 750
+                        width: 500,
+                        height: 500
                     }}
                 >
-                    <Cube size={750} index="front">
+                    <Cube size={500} index="front">
                         <img src={front} alt="front" onClick={(event) => this.handleClick(event)}/>
                         <img src={left} alt="right"/>
                         <img src={back} alt="back"/>

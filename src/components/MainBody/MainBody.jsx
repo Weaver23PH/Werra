@@ -113,8 +113,9 @@ class PopupRotate extends React.Component {
             <div className={styles.popupRotate}>
                 <div className={styles.popup_innerRotate}>
                     <Rotate/>
-                    <button onClick={this.props.closePopup}>{this.props.text}</button>
+
                 </div>
+                <button id={styles.dButton} onClick={this.props.closePopup}>{this.props.text}</button>
             </div>
         );
     }

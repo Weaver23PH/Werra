@@ -66,6 +66,7 @@ div#MainBody {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
 div.popButton:hover {
   border: 2px solid red;
 }
@@ -123,11 +124,14 @@ div.popupRotate {
   right: 50%;
   margin: 0 auto;
   border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 div.popup_innerRotate {
   position: absolute;
-
   bottom: 50%;
   left: 50%;
   width: 100%;
@@ -135,4 +139,9 @@ div.popup_innerRotate {
   margin: auto;
   border: 1px solid yellow;
   z-index: 2;
+}
+
+button#dButton {
+
+  margin: 100px 0 0 500px;
 }
