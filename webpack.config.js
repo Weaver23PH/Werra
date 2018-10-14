@@ -14,6 +14,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
+                exclude: /\.global.scss$/,
                 use: [
                     {
                         loader: "style-loader"
@@ -29,6 +30,10 @@ module.exports = {
                         loader: "sass-loader"
                     }
                 ]
+            },
+            {
+                test: /\.global.scss$/,
+                use: [ "style-loader", "css-loader", "sass-loader"]
             },
             {
                 test: /\.(jpg|png)$/i,

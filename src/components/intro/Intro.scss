@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Cambay');
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
+
   div#intro {
     height: 50vh;
     width: 50vw;
@@ -18,4 +13,3 @@ body {
     color: white;
     font-family: 'Cambay', sans-serif;
   }
-}

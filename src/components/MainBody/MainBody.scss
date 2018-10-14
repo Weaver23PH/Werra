@@ -7,37 +7,77 @@ div#MainBody {
   margin: 0;
   padding: 0;
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 90vw;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  img {
+  border: 3px dotted blue;
+  div.imgContainer {
+    width: 100%;
     height: 100%;
-    background-size: contain;
-    z-index: 0;
-  }
-  div.popButtonCalc {
-    position: absolute;
-    top: 30%;
-    left: 30%;
-    height: 10%;
-    width: 10%;
-    z-index: 1;
+    position: relative;
+    border: 1px solid red;
+    img {
+      height: 100%;
+      background-size: contain;
+      z-index: -1;
+    }
+    div.popButtonCalc {
+      position: absolute;
+      top: 30%;
+      left: 30%;
+      height: 100px;
+      width: 100px;
+      z-index: 1;
+    }
+    div.popButtonGallery {
+      position: absolute;
+      top: 45%;
+      left: 45%;
+      height: 100px;
+      width: 100px;
+      z-index: 1;
+    }
+    div.popButtonRotate {
+      position: absolute;
+      top: 45%;
+      left: 60%;
+      height: 100px;
+      width: 100px;
+      z-index: 1;
+    }
   }
 }
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 div.popButton:hover {
-  border: 1px solid red;
+  border: 2px solid red;
 }
 
 div.popupCalc {
   position: fixed;
-  width: 33%;
-  height: 100%;
+  width: 30%;
+  height: 75%;
   top: 0;
   left: 0;
   margin: 0 auto;
+
 }
 
 div.popup_innerCalc {
@@ -49,4 +89,50 @@ div.popup_innerCalc {
   width: 100%;
   height: 100%;
   margin: auto;
+  z-index: 2;
+}
+
+div.popupGallery {
+  position: absolute;
+  width: 33%;
+  height: 55%;
+  top: 50%;
+  right: 50%;
+  margin: 0 auto;
+  border: 1px solid green;
+
+}
+
+div.popup_innerGallery {
+  position: absolute;
+
+  bottom: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  border: 1px solid yellow;
+  z-index: 2;
+}
+
+div.popupRotate {
+  position: absolute;
+  width: 33%;
+  height: 55%;
+  top: 50%;
+  right: 50%;
+  margin: 0 auto;
+  border: 1px solid green;
+}
+
+div.popup_innerRotate {
+  position: absolute;
+
+  bottom: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  border: 1px solid yellow;
+  z-index: 2;
 }

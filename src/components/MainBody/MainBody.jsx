@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from "./MainBody.scss";
 import Calculator from '../calculator/Calculator';
+import Gallery from '../gallery/gallery';
 import bckSrc from "./img/Box_6.JPG";
+import Rotate from '../rotate/Rotate'
 
 
 class MainBody extends React.Component {
@@ -10,7 +12,8 @@ class MainBody extends React.Component {
         super();
         this.state = {
             showPopupCalc: false,
-            showPopup2: false,
+            showPopupGallery: false,
+            showPopupRotate: false
         };
     }
 
@@ -20,9 +23,15 @@ class MainBody extends React.Component {
         });
     }
 
-    togglePopup2() {
+    togglePopupGallery() {
         this.setState({
-            showPopup2: !this.state.showPopup2
+            showPopupGallery: !this.state.showPopupGallery
+        });
+    }
+
+    togglePopupRotate() {
+        this.setState({
+            showPopupRotate: !this.state.showPopupRotate
         });
     }
 
@@ -30,10 +39,22 @@ class MainBody extends React.Component {
 
         return (
             <div id={styles.MainBody}>
-                <div className={styles.popButtonCalc + ' ' + styles.popButton} onClick={this.togglePopupCalc.bind(this)}> </div>
-                <div className={styles.popButtonTwo + ' ' + styles.popButton} onClick={this.togglePopupCalc.bind(this)}> </div>
-                <img src={bckSrc} alt="Werra"/>
 
+                <div className={styles.imgContainer}>
+                    <img src={bckSrc} alt="Werra"/>
+                    <div className={styles.popButtonCalc + ' ' + styles.popButton + ' ' + styles.tooltip}
+                         onClick={this.togglePopupCalc.bind(this)}>
+                        <span className={styles.tooltiptext}>EV Calculator</span>
+                    </div>
+                    <div className={styles.popButtonGallery + ' ' + styles.popButton + ' ' + styles.tooltip}
+                         onClick={this.togglePopupGallery.bind(this)}>
+                        <span className={styles.tooltiptext}>PHoto Gallery</span>
+                    </div>
+                    <div className={styles.popButtonRotate + ' ' + styles.popButton + ' ' + styles.tooltip}
+                         onClick={this.togglePopupRotate.bind(this)}>
+                        <span className={styles.tooltiptext}>3D View</span>
+                    </div>
+                </div>
                 {this.state.showPopupCalc ?
                     <PopupCalc
                         text='Close'
@@ -41,13 +62,20 @@ class MainBody extends React.Component {
                     />
                     : null
                 }
-                {this.state.showPopup2 ?
-                <Popup
+                {this.state.showPopupGallery ?
+                    <PopupGallery
+                        text='Close'
+                        closePopup={this.togglePopupGallery.bind(this)}
+                    />
+                    : null
+                }
+                {this.state.showPopupRotate ?
+                <PopupRotate
                     text='Close'
-                    closePopup={this.togglePopup2.bind(this)}
+                    closePopup={this.togglePopupRotate.bind(this)}
                 />
                 : null
-                }
+            }
             </div>
         );
     }
@@ -65,12 +93,26 @@ class PopupCalc extends React.Component {
         );
     }
 }
-class Popup extends React.Component {
+
+class PopupGallery extends React.Component {
     render() {
         return (
-            <div className={styles.popupCalc}>
-                <div className={styles.popup_innerCalc}>
-                    <Calculator/>
+            <div className={styles.popupGallery}>
+                <div className={styles.popup_innerGallery}>
+                    <Gallery/>
+                    <button onClick={this.props.closePopup}>{this.props.text}</button>
+                </div>
+            </div>
+        );
+    }
+}
+
+class PopupRotate extends React.Component {
+    render() {
+        return (
+            <div className={styles.popupRotate}>
+                <div className={styles.popup_innerRotate}>
+                    <Rotate/>
                     <button onClick={this.props.closePopup}>{this.props.text}</button>
                 </div>
             </div>

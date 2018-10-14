@@ -5,13 +5,15 @@ div#calculator, form {
   align-items: center;
   background-color: white;
 }
+
 table, td, th {
   border: 1px solid black;
   text-align: center;
   background-color: white;
 }
-div#calculator{
-  width: 100%;
 
+div#calculator {
+  width: 80%;
+  height: 100%;
   background-color: rgba(222, 222, 222, 0.5);
 }
