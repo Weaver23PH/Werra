@@ -8,6 +8,7 @@ import back from "./img/werra_back.JPG";
 import left from "./img/werra_open_cap_left_side_flat.JPG";
 import top from "./img/werra_open_cap_top_side.JPG";
 import bottom from "./img/werra_open_cap_bottom_side.JPG";
+import {Link} from "react-router-dom";
 
 class Rotate extends React.Component {
     handleClick = (event) => {
@@ -21,11 +22,12 @@ class Rotate extends React.Component {
 
                 <div
                     style={{
-                        width: 500,
-                        height: 500
+                        width: 750,
+                        height: 750,
+                        position: "absolute"
                     }}
                 >
-                    <Cube size={500} index="front">
+                    <Cube size={750} index="front">
                         <img src={front} alt="front" onClick={(event) => this.handleClick(event)}/>
                         <img src={left} alt="right"/>
                         <img src={back} alt="back"/>
@@ -33,6 +35,9 @@ class Rotate extends React.Component {
                         <img src={top} alt="top"/>
                         <img src={bottom} alt="bottom"/>
                     </Cube>
+
+                        <Link to='/' className={styles.close}>Close</Link>
+
                 </div>
             </div>
     );

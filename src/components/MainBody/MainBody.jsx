@@ -4,8 +4,8 @@ import styles from "./MainBody.scss";
 import Calculator from '../calculator/Calculator';
 import Gallery from '../gallery/gallery';
 import bckSrc from "./img/Box_6.JPG";
-import Rotate from '../rotate/Rotate'
-
+import {Link} from 'react-router-dom'
+import Rotate from "../rotate/Rotate";
 
 class MainBody extends React.Component {
     constructor() {
@@ -29,11 +29,6 @@ class MainBody extends React.Component {
         });
     }
 
-    togglePopupRotate() {
-        this.setState({
-            showPopupRotate: !this.state.showPopupRotate
-        });
-    }
 
     render() {
 
@@ -48,11 +43,11 @@ class MainBody extends React.Component {
                     </div>
                     <div className={styles.popButtonGallery + ' ' + styles.popButton + ' ' + styles.tooltip}
                          onClick={this.togglePopupGallery.bind(this)}>
-                        <span className={styles.tooltiptext}>PHoto Gallery</span>
+                        <span className={styles.tooltiptext}>Photo Gallery</span>
                     </div>
-                    <div className={styles.popButtonRotate + ' ' + styles.popButton + ' ' + styles.tooltip}
-                         onClick={this.togglePopupRotate.bind(this)}>
-                        <span className={styles.tooltiptext}>3D View</span>
+                    <div className={styles.popButtonRotate + ' ' + styles.popButton + ' ' + styles.tooltip}>
+                        <Link to='/Rotate' className={styles.tooltiptext}>3D View</Link>
+
                     </div>
                 </div>
                 {this.state.showPopupCalc ?
@@ -69,17 +64,11 @@ class MainBody extends React.Component {
                     />
                     : null
                 }
-                {this.state.showPopupRotate ?
-                <PopupRotate
-                    text='Close'
-                    closePopup={this.togglePopupRotate.bind(this)}
-                />
-                : null
-            }
+
             </div>
         );
     }
-};
+}
 
 class PopupCalc extends React.Component {
     render() {
@@ -102,20 +91,6 @@ class PopupGallery extends React.Component {
                     <Gallery/>
                     <button onClick={this.props.closePopup}>{this.props.text}</button>
                 </div>
-            </div>
-        );
-    }
-}
-
-class PopupRotate extends React.Component {
-    render() {
-        return (
-            <div className={styles.popupRotate}>
-                <div className={styles.popup_innerRotate}>
-                    <Rotate/>
-
-                </div>
-                <button id={styles.dButton} onClick={this.props.closePopup}>{this.props.text}</button>
             </div>
         );
     }
