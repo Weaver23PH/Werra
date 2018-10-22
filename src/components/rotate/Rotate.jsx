@@ -2,21 +2,43 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from "./Rotate.scss";
 import Cube from "react-3d-cube";
-import front from "./img/Box_6.JPG";
-import right from "./img/werra_open_cap_right_side_flat.JPG";
 import back from "./img/werra_back.JPG";
-import left from "./img/werra_open_cap_left_side_flat.JPG";
-import top from "./img/werra_open_cap_top_side.JPG";
-import bottom from "./img/werra_open_cap_bottom_side.JPG";
+import front1 from "./img/Box_6.JPG";
+import right1 from "./img/werra_open_cap_right_side_flat.JPG";
+import left1 from "./img/werra_open_cap_left_side_flat.JPG";
+import top1 from "./img/werra_open_cap_top_side.JPG";
+import bottom1 from "./img/werra_open_cap_bottom_side.JPG";
+import front2 from "./img/werra_front_sunshade.JPG";
+import right2 from "./img/werra_left_sunshade.JPG";
+import left2 from "./img/werra_right_sunshade.JPG";
+import top2 from "./img/werra_top_sunshade.JPG";
+import bottom2 from "./img/werra_bottom_sunshade.JPG";
+
 import {Link} from "react-router-dom";
 
 class Rotate extends React.Component {
-    handleClick = (event) => {
-        alert("hiyathere");
+    constructor(props) {
+        super(props);
+        this.state = {
+            sunshade: false,
+            noSunshade: true
+    }
     }
 
+    handleClick = (event) => {
+        alert("hiyathere");
+    };
+    changeLooks= (event)=>{
+        this.setState({
+            sunshade: !this.state.sunshade,
+            noSunshade: !this.state.noSunshade
+        });
 
-    render() {
+    };
+
+
+
+    render(){
         return (
             <div className={styles.rotate}>
 
@@ -27,21 +49,29 @@ class Rotate extends React.Component {
                         position: "absolute"
                     }}
                 >
-                    <Cube size={750} index="front">
-                        <img src={front} alt="front" onClick={(event) => this.handleClick(event)}/>
-                        <img src={left} alt="right"/>
+                    {this.state.noSunshade && <Cube size={750} index="front">
+                        <img src={front1} alt="front" onClick={(event) => this.handleClick(event)}/>
+                        <img src={left1} alt="right"/>
                         <img src={back} alt="back"/>
-                        <img src={right} alt="left"/>
-                        <img src={top} alt="top"/>
-                        <img src={bottom} alt="bottom"/>
-                    </Cube>
+                        <img src={right1} alt="left"/>
+                        <img src={top1} alt="top" onClick={(event) => this.changeLooks(event)}/>
+                        <img src={bottom1} alt="bottom"/>
+                    </Cube>}
+                    {this.state.sunshade && <Cube size={750} index="front">
+                        <img src={front2} alt="front" onClick={(event) => this.handleClick(event)}/>
+                        <img src={right2} alt="right"/>
+                        <img src={back} alt="back"/>
+                        <img src={left2} alt="left"/>
+                        <img src={top2} alt="top" onClick={(event) => this.changeLooks(event)}/>
+                        <img src={bottom2} alt="bottom"/>
+                    </Cube>}
 
-                        <Link to='/' className={styles.close}>Close</Link>
+                    <Link to='/' className={styles.close}>Close</Link>
 
                 </div>
             </div>
-    );
+        );
     }
-    }
+}
 
-    export default Rotate;
+export default Rotate;

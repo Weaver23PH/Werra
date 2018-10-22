@@ -4,7 +4,7 @@ h1 {
 }
 
 div#MainBody {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   position: relative;
   width: 90vw;
@@ -73,8 +73,8 @@ div.popButton:hover {
 
 div.popupCalc {
   position: fixed;
-  width: 30%;
-  height: 75%;
+  width: 30vw;
+  height: 75vh;
   bottom: 10%;
   left: 0;
   margin: 0 auto;
