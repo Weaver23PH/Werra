@@ -1,2 +1,3 @@
 # Werra
-werra react project (in progress)
+Zeiss Jena Werra 
+React project (in progress)
