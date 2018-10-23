@@ -4,7 +4,15 @@ body {
   justify-content: center;
   align-items: center;
   background-color: black;
-  zoom: 0;
+  @media screen and (min-resolution: 120dpi) {
+
+    body {
+      transform: scale(0.8);
+      transform-origin: top left;
+      width: 125%;
+      height: 125%;
+    }
+  }
 }
 
 div {

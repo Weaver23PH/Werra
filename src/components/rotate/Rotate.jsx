@@ -22,45 +22,48 @@ class Rotate extends React.Component {
         this.state = {
             sunshade: false,
             noSunshade: true
-    }
+        }
     }
 
     handleClick = (event) => {
-        alert("hiyathere");
+        if (event.altKey) {
+            alert("hiyathere");
+        }
     };
-    changeLooks= (event)=>{
-        this.setState({
-            sunshade: !this.state.sunshade,
-            noSunshade: !this.state.noSunshade
-        });
+    changeLooks = (event) => {
+        if (event.shiftKey)
+            this.setState({
+                sunshade: !this.state.sunshade,
+                noSunshade: !this.state.noSunshade
+            });
 
     };
 
 
-
-    render(){
+    render() {
         return (
             <div className={styles.rotate}>
 
                 <div
                     style={{
-                        width: 750,
-                        height: 750,
-                        position: "absolute"
+                        width: 600,
+                        height: 600,
+                        position: "absolute",
+                        top: `30%`
                     }}
                 >
-                    {this.state.noSunshade && <Cube size={750} index="front">
+                    {this.state.noSunshade && <Cube size={600} index="front">
                         <img src={front1} alt="front" onClick={(event) => this.handleClick(event)}/>
                         <img src={left1} alt="right"/>
-                        <img src={back} alt="back"/>
+                        <Link to='/' className={styles.close}> <img src={back} alt="back"/></Link>
                         <img src={right1} alt="left"/>
                         <img src={top1} alt="top" onClick={(event) => this.changeLooks(event)}/>
                         <img src={bottom1} alt="bottom"/>
                     </Cube>}
-                    {this.state.sunshade && <Cube size={750} index="front">
+                    {this.state.sunshade && <Cube size={600} index="front">
                         <img src={front2} alt="front" onClick={(event) => this.handleClick(event)}/>
                         <img src={right2} alt="right"/>
-                        <img src={back} alt="back"/>
+                        <Link to='/' className={styles.close}> <img src={back} alt="back"/></Link>
                         <img src={left2} alt="left"/>
                         <img src={top2} alt="top" onClick={(event) => this.changeLooks(event)}/>
                         <img src={bottom2} alt="bottom"/>
