@@ -1,15 +1,17 @@
 const webpack = require('webpack');
+const postcss = require('postcss');
+const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = {
 
-    module:{
+    module: {
         rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
-                    options: { presets: ["es2015", "stage-2", "react"] }
+                    options: {presets: ["es2015", "stage-2", "react"]}
                 }
             },
             {
@@ -22,18 +24,20 @@ module.exports = {
                     {
                         loader: "css-loader",
                         options: {
-                            modules:true,
+                            modules: true,
                             localIdentName: "[local]_[hash]"
                         }
                     },
                     {
                         loader: "sass-loader"
+                    }, {
+                        loader: "postcss-loader"
                     }
                 ]
             },
             {
                 test: /\.global.scss$/,
-                use: [ "style-loader", "css-loader", "sass-loader"]
+                use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"]
             },
             {
                 test: /\.(jpg|png)$/i,
@@ -49,7 +53,7 @@ module.exports = {
         ]
 
     },
-    resolve:{
+    resolve: {
         extensions: ["*", ".js", ".jsx"]
     },
     entry: "./src/index.js",
