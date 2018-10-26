@@ -76,7 +76,7 @@ class PopupCalc extends React.Component {
             <div className={styles.popupCalc}>
                 <div className={styles.popup_innerCalc}>
                     <Calculator/>
-                    <button onClick={this.props.closePopup}>{this.props.text}</button>
+                    <button id={styles.calcButton}onClick={this.props.closePopup}>{this.props.text}</button>
                 </div>
             </div>
         );
@@ -89,7 +89,7 @@ class PopupGallery extends React.Component {
             <div className={styles.popupGallery}>
                 <div className={styles.popup_innerGallery}>
                     <Gallery/>
-                    <button onClick={this.props.closePopup}>{this.props.text}</button>
+                    <button id={styles.galleryButton} onClick={this.props.closePopup}>{this.props.text}</button>
                 </div>
             </div>
         );

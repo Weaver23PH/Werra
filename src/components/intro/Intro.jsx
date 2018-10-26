@@ -124,7 +124,8 @@ class Intro extends React.Component {
             height: `100%`,
             width: `100%`,
             border: `1px solid red`,
-            marginTop: `5vh`
+            marginTop: `5vh`,
+            padding: `5px`
 
         };
         return (
