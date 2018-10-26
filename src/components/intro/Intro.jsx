@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from "./Intro.scss";
+import werra_1 from "./icons/werra_1.JPG";
+import werra_2 from "./icons/werra_2.JPG";
+import werra_3 from "./icons/werra_3.JPG";
+import werra_4 from "./icons/werra_4.JPG";
+import werra_5 from "./icons/werra_5.JPG";
+import werra_6 from "./icons/werra_6.JPG";
 
 let images = [];
 
@@ -10,38 +16,73 @@ function importAll(r) {
 
 importAll(require.context('./img/', true, /\.JPG$/));
 
-class TextTyper extends React.Component {
+
+class Iconiser extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            characters: this.props.reversed ? this.props.text.length : 1
+            counter: 0,
+            center: werra_1,
+            vis: [
+                "visible",
+                "hidden",
+                "hidden",
+                "hidden",
+                "hidden"
+            ]
         }
     }
 
-    componentDidMount() {
-        this.interval = setInterval(() => {
-            this.setState((state) => ({
-                characters: this.props.reversed ? state.characters - 1 : state.characters + 1,
-            }))
-        }, 500)
-    }
-
-    shouldComponentUpdate() {
-        return this.props.reversed
-            ? this.state.characters > 0
-            : this.state.characters < this.props.text.length
-    }
-
     componentWillUnmount() {
-        clearInterval(this.interval);
+        clearInterval(this.countInterval);
     }
+
+    componentDidMount() {
+        this.countInterval = setInterval(() => {
+            if (this.state.counter < images.length - 1) {
+                let tempArray = [...this.state.vis];
+                tempArray[this.state.counter + 1] = "visible";
+                this.setState(prevState => ({
+                    counter: prevState.counter + 1,
+                    vis: tempArray
+                }));
+            } else if (this.state.counter === 4) {
+                this.setState({
+                    center: werra_5
+                })
+            }
+            console.log(this.state.counter);
+        }, 2000);
+
+    }
+
 
     render() {
-        return <h1>{this.props.text.slice(0, this.state.characters)}</h1>;
+        let boxShowStyle = {
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
+            width: `100%`,
+            // height: `90%`
+
+
+        };
+        return (
+            <div id={styles.intro2}>
+                <div id="icon_1"
+                     style={{...boxShowStyle, ...{backgroundImage: `url(${werra_4})`}, ...{visibility: this.state.vis[3]}}}></div>
+                <div id="icon_2"
+                     style={{...boxShowStyle, ...{backgroundImage: `url(${werra_2})`}, ...{visibility: this.state.vis[1]}}}></div>
+                <div id="icon_3"
+                     style={{...boxShowStyle, ...{backgroundImage: `url(${this.state.center})`}, ...{visibility: this.state.vis[0]}}}></div>
+                <div id="icon_4"
+                     style={{...boxShowStyle, ...{backgroundImage: `url(${werra_3})`}, ...{visibility: this.state.vis[2]}}}></div>
+                <div id="icon_5"
+                     style={{...boxShowStyle, ...{backgroundImage: `url(${werra_6})`}, ...{visibility: this.state.vis[4]}}}></div>
+            </div>
+        )
     }
 }
-
 
 class Intro extends React.Component {
     constructor(props) {
@@ -52,7 +93,7 @@ class Intro extends React.Component {
         }
     }
 
-    componentDidUnmount() {
+    componentWillUnmount() {
         clearInterval(this.countInterval);
     }
 
@@ -82,14 +123,15 @@ class Intro extends React.Component {
             backgroundSize: "contain",
             height: `100%`,
             width: `100%`,
-            border: `1px solid red`
+            border: `1px solid red`,
+            marginTop: `5vh`
 
         };
         return (
             <div>
-                <TextTyper text="Carl Zeiss Jena - WERRA"/>
+                <Iconiser/>
                 <div id={styles.intro}>
-                    <div id="boxShow" style={boxShowStyle}> </div>
+                    <div id="boxShow2" style={boxShowStyle}></div>
                 </div>
             </div>
         )
