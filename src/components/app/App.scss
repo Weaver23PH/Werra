@@ -4,6 +4,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: black;
+  user-select: none;
   @media screen and (min-resolution: 120dpi) {
 
     body {

@@ -1,35 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from "./Intro.scss";
-import werra_1 from "./icons/werra_1.JPG";
-import werra_2 from "./icons/werra_2.JPG";
-import werra_3 from "./icons/werra_3.JPG";
-import werra_4 from "./icons/werra_4.JPG";
-import werra_5 from "./icons/werra_5.JPG";
-import werra_6 from "./icons/werra_6.JPG";
 
 let images = [];
+const icons = [];
 
-function importAll(r) {
-    r.keys().forEach(key => images.push(r(key)));
+function importAll(r, array) {
+    r.keys().forEach(key => array.push(r(key)));
 }
 
-importAll(require.context('./img/', true, /\.JPG$/));
+importAll(require.context('./img/', true, /\.JPG$/), images);
+importAll(require.context('./icons/', true, /\.JPG$/), icons);
 
+
+const scenes = [
+    [null, null, null, null, null],
+    [null, null, 0, null, null],
+    [null, 1, 0, null, null],
+    [null, 1, 0, 2, null],
+    [3, 1, 0, 2, null],
+    [3, 1, 0, 2, 5],
+    [3, 1, 0, 2, 5],
+    [3, 1, 6, 2, 5]
+];
 
 class Iconiser extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            counter: 0,
-            center: werra_1,
-            vis: [
-                "visible",
-                "hidden",
-                "hidden",
-                "hidden",
-                "hidden"
-            ]
+            counter: 0
         }
     }
 
@@ -40,19 +39,12 @@ class Iconiser extends React.Component {
     componentDidMount() {
         this.countInterval = setInterval(() => {
             if (this.state.counter < images.length - 1) {
-                let tempArray = [...this.state.vis];
-                tempArray[this.state.counter + 1] = "visible";
                 this.setState(prevState => ({
-                    counter: prevState.counter + 1,
-                    vis: tempArray
+                    counter: prevState.counter + 1
                 }));
-            } else if (this.state.counter === 4) {
-                this.setState({
-                    center: werra_5
-                })
             }
             console.log(this.state.counter);
-        }, 2000);
+        }, 1500);
 
     }
 
@@ -69,16 +61,16 @@ class Iconiser extends React.Component {
         };
         return (
             <div id={styles.intro2}>
-                <div id="icon_1"
-                     style={{...boxShowStyle, ...{backgroundImage: `url(${werra_4})`}, ...{visibility: this.state.vis[3]}}}></div>
-                <div id="icon_2"
-                     style={{...boxShowStyle, ...{backgroundImage: `url(${werra_2})`}, ...{visibility: this.state.vis[1]}}}></div>
-                <div id="icon_3"
-                     style={{...boxShowStyle, ...{backgroundImage: `url(${this.state.center})`}, ...{visibility: this.state.vis[0]}}}></div>
-                <div id="icon_4"
-                     style={{...boxShowStyle, ...{backgroundImage: `url(${werra_3})`}, ...{visibility: this.state.vis[2]}}}></div>
-                <div id="icon_5"
-                     style={{...boxShowStyle, ...{backgroundImage: `url(${werra_6})`}, ...{visibility: this.state.vis[4]}}}></div>
+
+                { scenes[this.state.counter % scenes.length].map(iconIdx => {
+                    if (iconIdx === null ) {
+                        return <div style={ { ...boxShowStyle, visibility: "hidden" } } />;
+                    } else {
+                        return <div style={ { ...boxShowStyle, backgroundImage: `url(${icons[iconIdx]})`} } />;
+                    }
+
+                })}
+
             </div>
         )
     }

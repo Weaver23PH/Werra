@@ -88,7 +88,7 @@ div.popup_innerCalc {
   width: 100%;
   height: 100%;
   margin: auto;
-  z-index: 2;
+  z-index: 5;
 }
 
 div.popupGallery {
@@ -136,5 +136,5 @@ div.popup_innerRotate {
 }
 
 button#galleryButton{
-  margin: 100px 0 10px 0;
+  margin: 100px 0 -10px 0;
 }
