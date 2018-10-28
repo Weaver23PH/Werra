@@ -110,6 +110,7 @@ class PopupHistory extends React.Component {
         return (
             <div className={styles.popupHistory}>
                 <div className={styles.popup_innerHistory}>
+                    <h1>Zeiss Jena Werra</h1>
                     <p>
                     Historically, the <em>Werra</em> is interesting, in that it's one of the very few cameras to bear the Carl
                     Zeiss name. According to the Leitz museum, the Werra project was created in the early 1950's to

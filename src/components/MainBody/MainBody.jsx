@@ -12,8 +12,7 @@ class MainBody extends React.Component {
         super();
         this.state = {
             showPopupCalc: false,
-            showPopupGallery: false,
-            showPopupRotate: false
+            showPopupGallery: false
         };
     }
 
