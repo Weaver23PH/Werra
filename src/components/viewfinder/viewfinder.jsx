@@ -8,7 +8,7 @@ class Viewfinder extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            facingMode: {exact: "environment"}
+            facingMode: "user"
         }
     }
 
@@ -26,7 +26,7 @@ class Viewfinder extends React.Component {
     switchCamera = () => {
         if (this.state.facingMode == "user") {
             this.setState({
-                facingMode: {exact: "environment"}
+                facingMode: "environment"
             });
         } else {
             this.setState({
@@ -50,7 +50,7 @@ class Viewfinder extends React.Component {
             height: `455px`,
             width: `580px`,
             position: `absolute`,
-            top: `200px`
+            top: `190px`
 
         };
 
