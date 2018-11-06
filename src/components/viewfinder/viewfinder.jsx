@@ -5,6 +5,13 @@ import Webcam from "react-webcam";
 import filter from "./img/VIEWFINDER.png";
 
 class Viewfinder extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            facingMode: {exact: "environment"}
+        }
+    }
+
     setRef = webcam => {
         this.webcam = webcam;
     };
@@ -14,14 +21,25 @@ class Viewfinder extends React.Component {
         let image = new Image();
         image.src = imageSrc;
         let cameraBox = document.getElementById("cameraBox");
-        document.getElementById("photoCollector").replaceChild(image,cameraBox);
+        document.getElementById("photoCollector").replaceChild(image, cameraBox);
+    };
+    switchCamera = () => {
+        if (this.state.facingMode == "user") {
+            this.setState({
+                facingMode: {exact: "environment"}
+            });
+        } else {
+            this.setState({
+                facingMode: "user"
+            });
+        }
     };
 
     render() {
         const videoConstraints = {
             width: 580,
             height: 450,
-            facingMode: "user"
+            facingMode: this.state.facingMode
         };
 
         const filterStyle = {
@@ -39,17 +57,19 @@ class Viewfinder extends React.Component {
         return (
             <div id="photoCollector">
                 <div id="cameraBox">
-                <Webcam
-                    audio={false}
-                    height={450}
-                    ref={this.setRef}
-                    screenshotFormat="image/jpeg"
-                    width={580}
-                    videoConstraints={videoConstraints}
-                    mirror={true}
-                />
-                <div  style={filterStyle}/>
-                <button onClick={this.capture}>Capture photo</button>
+                    <Webcam
+                        audio={false}
+                        height={450}
+                        ref={this.setRef}
+                        screenshotFormat="image/jpeg"
+                        width={580}
+                        videoConstraints={videoConstraints}
+                        mirror={true}
+                    />
+                    <div style={filterStyle}/>
+
+                    <button onClick={this.capture}>Capture photo</button>
+                    <button onClick={this.switchCamera}>Switch camera</button>
                 </div>
             </div>
         );
