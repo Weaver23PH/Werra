@@ -19,7 +19,7 @@
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
     "firebase": "^5.5.2",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.13.1",
     "postcss-loader": "^2.1.6",
     "postcss-preset-env": "^6.2.0",
     "react": "^16.5.2",
